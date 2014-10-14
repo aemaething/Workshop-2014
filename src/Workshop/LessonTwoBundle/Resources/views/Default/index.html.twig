@@ -1,0 +1,18 @@
+{% extends "WorkshopLessonTwoBundle::main.html.twig" %}
+
+{% block content %}
+    <div class="hero-unit">
+        {% if name is not null %}
+            <h1>Hello, {{ name }}</h1>
+            <p>Willkommen beim Symfony Workshop!</p>
+        {% else %}
+            <h1>No name given...</h1>
+            <p>
+                Versuch es: einfach einen Namen an die URL anhängen<br />
+                Zum Beispiel: <a
+                        href="{{ url('workshop_lessonTwo_default_index_2', { name : 'JohnDoe'}) }}"
+                        >{{ url('workshop_lessonTwo_default_index_2', { name : 'JohnDoe'}) }}</a>
+            </p>
+        {% endif %}
+    </div>
+{% endblock %}

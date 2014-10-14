@@ -1,0 +1,26 @@
+{% extends "WorkshopLessonTwoBundle::main.html.twig" %}
+
+{% block content %}
+
+    {% include 'WorkshopLessonTwoBundle:BlogPlus:blogPost.html.twig' with { blogPost: blogPost } %}
+
+    <div class="row">
+        <hr class="span12" />
+    </div>
+    <div class="row">
+        <div class="span12">
+            <h4>Kommentar hinzufügen</h4>
+            <form {# novalidate="novalidate" #} action="{{ url('workshop_lessonTwo_blogPlus_createComment', { page: page, slug: slug}) }}"
+                    {{ form_enctype(form) }} method="post" class="form form-horizontal">
+                {{ form_widget(form) }}
+                <div class="form-actions">
+                    <a class="btn" href="{{ url('workshop_lessonTwo_blogPlus_detail', {page: page, slug: slug}) }}">Zurück</a>
+                    <button type="submit" class="btn btn-primary">Speichern</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <hr class="span12" />
+    </div>
+{% endblock %}

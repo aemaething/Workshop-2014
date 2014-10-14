@@ -1,0 +1,26 @@
+{% extends "WorkshopLessonTwoBundle::main.html.twig" %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="span9">
+            <h1>{{ blogPost.title }}</h1>
+            {{ blogPost.content|nl2br }}
+        </div>
+        <div class="span3 text-right">
+            <h5>{{ blogPost.author }}</h5>
+            <em>{{ blogPost.createdAt|date('d.m.Y, H:i') }}</em><br />
+            <a href="{{ url('workshop_lessonTwo_blog_paged', {page: page}) }}" class="">Index</a>
+        </div>
+    </div>
+    <div class="row">
+        <hr class="span12" />
+    </div>
+    <div class="row">
+
+        <div class="span12">
+            <blockquote class="muted">{{ blogPost.abstract }}</blockquote>
+        </div>
+    </div>
+
+{% endblock %}

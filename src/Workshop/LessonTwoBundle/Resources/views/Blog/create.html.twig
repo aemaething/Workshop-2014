@@ -1,0 +1,34 @@
+{% extends "WorkshopLessonTwoBundle::main.html.twig" %}
+
+{% block content %}
+    <div class="row">
+        <div class="span4">
+            <h4>Formular</h4>
+            <form {# novalidate="novalidate" #} action="{{ url('workshop_lessonTwo_blog_create') }}"
+                    {{ form_enctype(form) }} method="post" class="form form-horizontal">
+                {{ form(form) }}
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Speichern</button>
+                </div>
+            </form>
+        </div>
+        <div class="span8">
+            {% verbatim %}
+                <h4>Anmerkungen</h4>
+                <p>
+                    <code>{{ form(form) }}</code> rendert das komplette Form.<br />
+                    Einzelne Form-Elemente lassen sich auch rendern: <code>{{ form_widget(form.title) }}</code>,
+                    <a target="_blank" href="http://symfony.com/doc/current/book/forms.html#rendering-each-field-by-hand">Manual</a>.
+                </p>
+                <p>
+                    <code>{{ form_enctype(form) }}</code> Fügt <code>enctype="multipart/form-data"</code> dem Form hinzu,
+                    sofern ein Upload enthalten ist.
+                </p>
+                <p>Wird dem Form-Tag ein <code>novalidate="novalidate"</code> hinzugefügt, findet keine HTML5 Validierung
+                    mehr statt (eignet sich sehr gut, um die eigene Server-seitige Validierung zu testen.</p>
+                <p>&nbsp;</p>
+                <p class="text-error"><i class="icon-question-sign"></i> Warum ist Validierung eine gute Idee?</p>
+            {% endverbatim %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,40 @@
+workshop_main_bundle:
+    resource: "@WorkshopMainBundle/Controller/"
+    type:     annotation
+
+workshop_lessonOne_bundle:
+    resource: "@WorkshopLessonOneBundle/Controller/"
+    type:     annotation
+    prefix:   /lesson-one
+
+workshop_lesson_two:
+    resource: "@WorkshopLessonTwoBundle/Controller/"
+    type:     annotation
+    prefix:   /lesson-two
+
+
+
+
+
+# no routing needed
+#workshop_twitter_bootstrap:
+#    resource: "@WorkshopTwitterBootstrapBundle/Controller/"
+#    type:     annotation
+#    prefix:   /
+
+
+# just some examples
+#example_one
+#    path:    /example/list/{page}
+#    defaults: { _controller: ExampleBundle:Demo:list, page: 1 }
+#    requirements:
+#        page: \d+
+
+#example_two:
+#    path:      /example/detail/{slug}
+#    defaults:  { _controller: ExampleBundle:Demo:show }
+
+#example_three:
+#     path:     /example/create
+#     defaults: { _controller: ExampleBunddle:Demo:create }
+#     methods:  [POST]

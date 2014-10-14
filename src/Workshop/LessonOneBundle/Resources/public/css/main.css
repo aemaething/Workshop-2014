@@ -1,0 +1,11 @@
+.odd {
+	background-color: #eeeeee;
+}
+.even {
+	background-color: #f6f6f6;
+}
+
+.more-space {
+	margin: 5px;
+	padding: 5px;
+}

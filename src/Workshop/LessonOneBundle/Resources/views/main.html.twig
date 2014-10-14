@@ -1,0 +1,21 @@
+{% extends "WorkshopMainBundle::main.html.twig" %}
+
+{% block currentBundle %}LessonOneBundle{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+	{% javascripts filter="?yui_js"
+		'@WorkshopLessonOneBundle/Resources/public/js/app.js'
+	%}
+	<script src="{{ asset_url }}" type="text/javascript"></script>
+	{% endjavascripts %}
+{% endblock%}
+
+{% block stylesheets %}
+	{{ parent() }}
+	{% stylesheets filter='?yui_css'
+		'bundles/workshoplessonone/css/main.css'
+	%}
+	<link rel="stylesheet" href="{{ asset_url }}" />
+	{% endstylesheets %}
+{% endblock %}

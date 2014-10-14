@@ -1,0 +1,50 @@
+{% extends "WorkshopLessonTwoBundle::main.html.twig" %}
+
+{% block content %}
+    <div class="hero-unit">
+        <h1>Blog posts</h1>
+    </div>
+
+    {% for bp in pagination %}
+        {% if loop.first %}
+            <div class="row">
+        {% endif %}
+
+        <div class="span4">
+            <h2>{{ bp.title }}</h2>
+            <p>
+                {% if bp.abstract|length > 100 %}
+                    {{ bp.abstract|slice(0, 99) }}...
+                {% else %}
+                    {{ bp.abstract }}
+                {% endif %}
+            </p>
+
+            <a class="pull-right btn btn-mini"
+               href="{{ url("workshop_lessonTwo_blog_detail_id", {page: page, id: bp.id}) }}">Lesen</a>
+
+        </div>
+
+        {% if loop.index % 3 == 0 %}
+            </div><div class="row">
+        {% endif %}
+
+        {% if loop.last %}
+            </div>
+            <div class="row">
+                <div class="text-center span12">
+                    {{ knp_pagination_render(pagination) }}
+                </div>
+            </div>
+        {% endif %}
+    {% else %}
+        <div class="row">
+            <div class="span12">
+                <p class="text-error">
+                    Kein Blog-Posts gefunden.<br />
+                    Versuche <code>./app/console faker:populate</code> auf der Konsole.
+                </p>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends "WorkshopLessonOneBundle::main.html.twig" %}
+
+
+{% set styles = ['odd', 'even'] %}
+
+{% block content %}
+    <div class="hero-unit">
+        <h1>Lesson One</h1>
+        <p>Templating (Twig)</p>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <h3>Schleifen, Verzweigungen, etc.</h3>
+                {% for idx,data in iterable %}
+                    {% if loop.first %}<ul class="unstyled">{% endif %}
+                        <li class="more-space {{ cycle(styles, loop.index) }}">
+                            <i>Index: {{ idx }}</i>:
+							{% if "Hamburg" in data %}
+								<b>{{ data }}</b>
+							{% else %}
+								{{ data }}
+							{% endif %}
+                        </li>
+                    {% if loop.last %}</ul>{% endif %}
+                {% else %}
+                    <p class="text-error">Keine Daten zum Iterieren!</p>
+                {% endfor %}
+                <hr />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="span12">
+                <h3>Filter</h3>
+                {{ datetime|date("d.m.Y, H:i:s", "Europe/Berlin") }}
+                <hr />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="span12">
+                <h3>Verwendete Sprachelemente von Twig</h3>
+                	<ul class="unstyled">
+                        <li class="more-space">
+                            <a target="_blank" href="http://twig.sensiolabs.org/doc/tags/block.html"><code>block</code>-Tag</a>
+                        </li>
+						<li class="more-space">
+							<a target="_blank" href="http://twig.sensiolabs.org/doc/tags/set.html"><code>set</code>-Statement</a>
+						</li>
+						<li class="more-space">
+							<a target="_blank" href="http://twig.sensiolabs.org/doc/tags/for.html"><code>for</code>-Schleife</a>
+						</li>
+						<li class="more-space">
+							<a target="_blank" href="http://twig.sensiolabs.org/doc/tags/if.html"><code>if</code>-Statement</a>
+						</li>
+						<li class="more-space">
+							<a target="_blank" href="http://twig.sensiolabs.org/doc/functions/cycle.html"><code>cycle</code>-Funktion</a>
+						</li>
+						<li class="more-space">
+							<a target="_blank" href="http://twig.sensiolabs.org/doc/templates.html#containment-operator"><code>in</code>-Operator</a>
+						</li>
+						<li class="more-space">
+							<a target="_blank" href="http://twig.sensiolabs.org/doc/filters/date.html"><code>date</code>-Filter</a>
+						</li>
+                	</ul>
+                <hr />
+            </div>
+        </div>
+    </div>
+{% endblock %}

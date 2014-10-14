@@ -1,0 +1,32 @@
+{% extends "WorkshopLessonTwoBundle::main.html.twig" %}
+
+{% block content %}
+
+    {% include 'WorkshopLessonTwoBundle:BlogPlus:blogPost.html.twig' with { blogPost: blogPost } %}
+
+    <div class="row">
+        <hr class="span12" />
+    </div>
+
+    {% for bpc in comments %}
+        {% if loop.first %}
+            <div class="row">
+                <div class="span12">
+                    <h4>Kommentare</h4>
+                </div>
+        {% endif %}
+        <div class="span4 well">
+            <h2>{{ bpc.author }}</h2>
+            <span class="icon-calendar"></span><i>{{ bpc.createdAt|date('d.m.Y, H:i') }}</i>
+            <p>
+                {{ bpc.content }}
+            </p>
+        </div>
+        {% if loop.last %}
+            </div>
+            <div class="row">
+                <hr class="span12" />
+            </div>
+        {% endif %}
+    {% endfor %}
+{% endblock %}

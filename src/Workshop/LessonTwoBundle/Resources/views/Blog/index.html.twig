@@ -1,0 +1,46 @@
+{% extends "WorkshopLessonTwoBundle::main.html.twig" %}
+
+{% block content %}
+    <div class="hero-unit">
+        <h1>Blog posts</h1>
+    </div>
+    <div>
+        {% for bp in blogPosts %}
+            {% if loop.first %}
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th><span class="pull-right">#</span></th>
+                            <th>Titel</th>
+                            <th>Author</th>
+                            <th>Datum, Uhrzeit</th>
+                            <th>Online?</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            {% endif %}
+
+                    <tr class="popover-trigger"
+                        data-title="Auszug"
+                        data-content="{{ bp.abstract }}"
+                            >
+                        <td><span class="pull-right">{{ loop.index }}</span></td>
+                        <td>{{ bp.title }}</td>
+                        <td>{{ bp.author }}</td>
+                        <td>{{ bp.createdAt|date("d.m.Y, H:i") }}</td>
+                        <td><p class="{{ bp.isOnline ? "icon-ok" : "icon-remove" }}"></p></td>
+                    </tr>
+
+            {% if loop.last %}
+                    </tbody>
+                </table>
+            {%  endif %}
+
+        {% else %}
+            <p class="text-error">
+                Kein Blog-Posts gefunden.<br />
+                Versuche <code>./app/console faker:populate</code> auf der Konsole.
+            </p>
+        {% endfor %}
+    </div>
+{% endblock %}

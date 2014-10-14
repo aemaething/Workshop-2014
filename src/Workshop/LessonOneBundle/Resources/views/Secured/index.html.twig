@@ -1,0 +1,11 @@
+{% extends "WorkshopLessonOneBundle::main.html.twig" %}
+
+{% block content %}
+    <div class="hero-unit">
+        <h1>Secured area!</h1>
+        <p>Hello, <i>{{ app.user.username }}</i>!</p>
+        <p>
+            Andere, in Twig zur Verfügung stehende globale
+            Variablen: <a href="http://symfony.com/doc/current/book/templating.html#global-template-variables" target="_blank">Link</a>
+        </p>
+{% endblock %}
